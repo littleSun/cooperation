@@ -22,6 +22,10 @@ class Cooperation {
 
   static const _channel = MethodChannel('cooperation_channel');
 
+  Future<dynamic> call(String method, {Map? arguments}) async {
+    return await _handlerMap[method]?.call(arguments);
+  }
+  
   addHandler(String method, CooperationHandler handler) {
     _handlerMap[method] = handler;
   }
